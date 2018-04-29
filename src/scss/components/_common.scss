@@ -1,0 +1,133 @@
+/* ========================================
+
+    common
+        共通に使えるパーツ
+
+    INDEX
+        - wrapper
+        - anime
+
+======================================== */
+
+/* ========================================
+    wrapper
+======================================== */
+.bg-out {
+    position: fixed;
+    background-color: $C_MAIN;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+
+    &:before {
+        content: "";
+        position: absolute;
+        background-color: $C_BLACK;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        right: 0;
+    }
+}
+
+.bg {
+    position: fixed;
+    background-color: $C_BLACK;
+    top: 0;
+    left: 0;
+    right: 0;
+    max-width: $BP_S;
+    height: 100vh;
+    z-index: 1;
+    margin: auto;
+
+    &:before {
+        content: "";
+        position: absolute;
+        background-color: $C_MAIN;
+        width: 50%;
+        height: 100%;
+        top: 0;
+        right: 0;
+    }
+}
+
+.wrapper {
+    position: relative;
+    z-index: 2;
+    max-width: $BP_S;
+    margin: auto;
+}
+
+.inner {
+    width: 50%;
+    margin: 30px auto;
+    padding-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px double white;
+}
+
+
+/* ========================================
+    anime
+======================================== */
+%border-box {
+    position: absolute;
+    width: 50%;
+    height: 500px;
+    top: 0;
+    overflow: hidden;
+}
+
+.a-border {
+    position: relative;
+    z-index: -1;
+
+    .left {
+        @extend %border-box;
+        left: 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -110vw;
+            width: 200vw;
+            height: 30px;
+            background-color: $C_MAIN;
+            transform: translate(-100vw, -100vw) rotate(45deg);
+            transition: 0.5s;
+        }
+
+        &.js-active {
+            &:before {
+                transform: translate(0, 0) rotate(45deg);
+            }
+        }
+    }
+
+    .right {
+        @extend %border-box;
+        right: 0;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -110vw;
+            width: 200vw;
+            height: 30px;
+            background-color: $C_BLACK;
+            transform: translate(100vw, -100vw) rotate(-45deg);
+            transition: 0.5s;
+        }
+
+        &.js-active {
+            &:before {
+                transform: translate(0, 0) rotate(-45deg);
+            }
+        }
+    }
+}
